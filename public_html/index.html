@@ -1,0 +1,1955 @@
+<!DOCTYPE HTML>
+<!--Dimension by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/ll_plot_script.js"></script>
+		<script src="assets/js/feel_plot_script.js"></script>
+		<script src="assets/js/test_me.js"></script>
+		<script src="assets/js/fish_plots.js"></script>
+		<script src="assets/js/bifur_script.js"></script>
+			<script src="assets/js/relation_script.js"></script>
+		<!-- <script src="assets/js/invest_script.js"></script> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<title>Quantifying information content of dynamical systems around co-dimension 1 bifurcations</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--<a href="#sources">[if lte IE 9]</a>><link rel="stylesheet" href="assets/css/ie9.css" /><!<a href="#sources">[endif]</a>-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="icon fa-link"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<h1>Quantifying information content of dynamical systems around co-dimension 1 bifurcations </h1>
+								<p> Investigating the link between Parameter Inference and global stability
+
+								<!-- <h1>Quantifying information content around co-dimension 1 bifurcations </h1> -->
+								<!-- <p> Investigating the link between Parameter Inference and global stability in dynamical systems</p> -->
+							</div>
+
+						</div>
+
+						<nav>
+							<ul>
+								<li><a href="#about">About</a></li>
+								<li><a href="#abstract">Abstract</a></li>
+								<li><a href="#background">Background</a></li>
+								<li><a href="#results">Overview of  Results </a></li>
+								<li><a href="#discussion">Discussion</a></li>
+								<li><a href="#sources">Sources</a></li>
+								<li><a href="#contact">Contact</a></li>
+							</ul>
+						</nav>
+						<nav>
+							<ul>
+								<li><a href="#saddle">Likelihood </a></li>
+							</ul>
+						</nav>
+						<nav>
+							<ul>
+									<li><a href="#fisherinfo">Fisher information</a></li>
+						</ul>
+						</nav>
+					</header>
+
+					<div id="main">
+						<article id="about">
+							<h2 class="major">About</h2>
+							<h3 class="major">Lay summary </h3>
+
+
+									 <div id="text_lay">
+										 <p>
+											 Models of biological systems often include parameters which are unknown.
+											 These could be for example the reaction rate of a protein x or the initial amount of a protein y.
+											 Given the observation of a biological system with a known model
+											 but unknown parameters Bayesian inference can be used to estimate the true parameter values of the system.
+											 </p>
+											 <!-- The basic idea is to estimate the likelihood of the parameters given an observation of the system.  -->
+											 <p>
+											 In this project, Bayesian inference is performed to estimate parameters in dynamical systems
+											 which undergo a co-dimension 1 bifurcation.
+											 These are systems showing a qualitative stability change
+											 by varying exactly one parameter of the system (the bifurcation parameter).
+											 The parameters estimated in this project are the bifurcation parameter
+											 and the initial condition of the system.
+											 The estimations are performed under different conditions specified by
+											 noise, stochasticity and the number of observations.
+											 </p>
+											 	<p>
+												 The precision of the parameter estimation is related to the shape of the log-likelihood function.
+												 To investigate the change of the shape for different true parameter combinations in a quantitative manner,
+												 the Fisher information is calculated. Results show that favourable parameter combinations resulting	in more precise parameter estimation
+												 do exist for co-dimension 1 bifurcations. This holds even when increasing noise and stochasticity or	decreasing the number of observations.
+									 	 		</p>
+									 </div>
+
+
+
+							<!-- <div align="center" >
+								<fig>
+								<img src="images/modelselect.jpg" width="300" height="400">
+							</fig>
+							</div>
+							<div align="center" >
+							<caption><b>Figure 0:</b>
+							Investigating information content of two experiments. </caption>
+							</div> -->
+
+
+							<h3 class="major">Usage tips</h3>
+							<p> The website is built in a very intuitive way so most analysis functions are meant to be self explaining.
+									The <a href="#">Main page</a> shows you fields of the core sub pages.
+									Starting on the left with <a href="#about">About</a> and finishing on the right with <a href="#contact">Contact</a>,
+									the structure follows of a typical scientific report. The main part of the report is the highly interactive <a href="#results">Results</a> section.
+									Therefore it is divided into two subsections <a href="#saddle">Likelihood</a> and <a href="#fisherinfo">Fisher information</a>.
+									By clicking on each field on the main page, you have the possiblity jump right into the favoured section.
+									By using the escape key or clicking the x button on the top right of subsections,
+									you are guided to the <a href="#">Main page</a>.
+									Alternatively, you have the possiblity follow the arrows on the bottom of each page.
+									They guide you directly through the complete report without returning to the main page.
+									Cross referenced texts and figures are underlined. I strongly advise you to use the browser firefox.
+							</p>
+							<div id="about_links"  align="center" >
+											<ul class="alt">
+												<li>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<a href="#abstract"> To the next section: Abstract <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+
+										</ul>
+							</div>
+						</article>
+
+						<article id="abstract">
+							<h2 class="major">Abstract</h2>
+							<!-- <div id="bifur_example" align="center"  class="col-4" >
+						 			<figure>
+						 					<img src="images/abstract.png" >
+						 			</figure>
+						  </div> -->
+
+							<p>
+								In Systems Biology parameter inference has become a well known tool	to help specifying parametric mathematical models of dynamical systems.
+								A special kind of dynamical systems are systems undergoing a co-dimension 1 bifurcation.
+								They show a qualitative stability change when varying exactly one parameter of the system (the bifurcation parameter).
+								In this project, first a Bayesian parameter inference approach is used to investigate the log-likelihood surface
+								of the bifurcation parameter and the initial condition of the system of four different co-dimension 1 bifurcations.
+								The shape is analysed for various conditions including noise, stochasticity and the number of observations.
+								Additionally, the Fisher information around the bifurcation is estimated to gain a better understanding of the change of the shape
+								of the log-likelihood surface.
+								For all four bifurcations stability properties resulting in more precise parameter inference are identified.
+							</p>
+							<b>Keywords: </b>Bayesian inference, stability analysis, co-dimension 1 bifurcation
+							<p>
+
+							</p>
+							<div id="results_links"  align="center" >
+											<ul class="alt">
+												<li><a href="#about"><i class="icon fa-arrow-left" style="color:white;"></i>To the previous section: About</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<a href="#background">To the next section: Background <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+
+										</ul>
+							</div>
+						</article>
+
+
+						<article id="results">
+							<h2 class="major">Overview of Results </h2>
+									<p>The result section contains a likelihood surface analysis and a Fisher information analysis
+										of four co-dimension 1 bifurcations. By <b>clicking on the bifurcation diagrams</b> of the bifurcation type of interest
+										you will be forwarded to the specific likelihood surface analysis.
+										If you need help finding interesting parameter combinations suggestions can be found in the discussion.
+										The Fisher information analysis for all bifurcation types can be found <a href="#fisherinfo">here</a>.
+
+									</p>
+									<div class="row"  align="center"  >
+											 <div id="bifur_example" align="center"  class="col-4">
+														<figure>
+															<a href="#saddle"><img src="images/saddle.svg" width="650" height="300"></a>
+														</figure>
+											 </div>
+											 <div id="text_saddle" class="col-8">
+														 <div id="saddle_formel_ode"  align="center"  justify-content= "center">
+															 <p>
+																 <br/>
+																 <br/>
+																 <br/>
+																 <math xmlns = "http://www.w3.org/1998/Math/MathML">
+																	 <mfrac >
+																		 <mi>  dx </mi>
+																		 <mi>  dt </mi>
+																	 </mfrac>
+																	 &nbsp; =&nbsp;
+																	 f(x)
+																	 &nbsp;  =&nbsp; &alpha; -
+																	 <msup>
+																		 <mo>x</mo>
+																			 <mn>2</mn>
+																	 </msup>
+																</math>
+															 </p>
+															 <p> The saddle-node bifurcation. </p>
+
+														 </div>
+											 </div>
+									</div>
+									<div class="row"  align="center"  >
+											 <div id="bifur_example" align="center"  class="col-4" >
+														<figure>
+																<a href="#trans"><img src="images/Transcritical.svg" width="650" height="300"></a>
+														</figure>
+											 </div>
+											 <div id="text_saddle" class="col-8">
+														 <!-- <figcaption>Bifurcation diagram of the Transcritical bifurcation.</figcaption> -->
+														 <div id="trans_formel"  align="center" >
+															 <p>
+																 <br/>
+																<br/>
+																<br/>
+																 <math xmlns = "http://www.w3.org/1998/Math/MathML">
+																	 <mfrac >
+																		 <mi>  dx </mi>
+																		 <mi>  dt </mi>
+																	 </mfrac> &nbsp; =&nbsp;
+																 f(x)
+																 &nbsp; = &alpha;x -
+																	 <msup>
+																		 <mo>x</mo>
+																			 <mn>2</mn>
+																	 </msup>
+																	 </math>
+															 </p>
+														 <p> The transcritical bifurcation. </p>
+														 </div>
+											 </div>
+									</div>
+									<div class="row"  align="center"  >
+											 <div id="bifur_example" align="center"  class="col-4" >
+														<figure>
+																<a href="#super"><img src="images/Supercritical.svg" width="650" height="300"></a>
+														</figure>
+											 </div>
+											 <div id="text_saddle" class="col-8">
+												 <div id="super__formel"  align="center" >
+													 <p>
+														 <br/>
+														 <br/>
+														 <br/>
+														 <math xmlns = "http://www.w3.org/1998/Math/MathML">
+															 <mfrac >
+																 <mi>  dx </mi>
+																 <mi>  dt </mi>
+															 </mfrac> = &nbsp; =&nbsp;
+														 f(x)
+														 &nbsp; &alpha;x -
+															 <msup>
+																 <mo>x</mo>
+																	 <mn>3</mn>
+															 </msup>
+														 </math>
+													 </p>
+												 <p> The supercritical pitchfork bifurcation. </p>
+												 </div>
+											 </div>
+									</div>
+									<div class="row"  align="center"  >
+											 <div id="bifur_example" align="center"  class="col-4" >
+														<figure>
+																<a href="#sub"><img src="images/Subcritical.svg" width="650" height="300"></a>
+														</figure>
+											 </div>
+											 <div id="text_saddle" class="col-8">
+												 <div id="sub_formel"  align="center" >
+													 <p>
+														 <br/>
+														 <br/>
+														 <br/>
+														 <math xmlns = "http://www.w3.org/1998/Math/MathML">
+															 <mfrac >
+																 <mi>  dx </mi>
+																 <mi>  dt </mi>
+															 </mfrac> = &nbsp;
+																 f(x)
+																 &nbsp;  =&nbsp;  &alpha;x +
+															 <msup>
+																 <mo>x</mo>
+																	 <mn>3</mn>
+															 </msup>
+														 </math>
+													 </p>
+												 <p> The subcritical pitchfork bifurcation. </p>
+												 </div>
+											 </div>
+									</div>
+									<div id="results_links"  align="center" >
+													<ul class="alt">
+														<li><a href="#"><i class="icon fa-arrow-left" style="color:white;"></i>To the previous section: Background</a>
+															<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+															<a href="#discussion">To the next section: Discussion <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+
+												</ul>
+									</div>
+						</article>
+
+						<article id="background">
+							<h2 class="major">Background</h2>
+							<h3 class="major" id = "global_stab_ana">Parameter inference in Systems Biology</h3>
+							<p>
+								In Systems Biology it is often the case that data of dynamical systems is retrieved even though there is little knowledge about
+								the underlying theory such as the true values of the parameters of the system.
+								The idea to determine properties of the system, given some observed behaviour is manifested in the Bayes' theorem (Formula 1),<a href="#sources">[1]</a>.
+							</p>
+								<div id="bay"  align="center" >
+									<p>
+										<math xmlns = "http://www.w3.org/1998/Math/MathML">	P ( A | B ) &nbsp; = &nbsp;
+											<mfrac >
+												<mi>   P ( B | A ) P ( A ) </mi>
+												<mi>   P ( B ) </mi>
+											</mfrac>
+
+										</math>
+									</p>
+									<h6> Formula 1: Bayes' Theorem. </h6>
+								</div>
+									<p>
+								The probability of a property A given the observation B is determined by the probability of the observation B
+								given the property A times the probability of A, divided by the probability of the observation B. The probability of A
+								is called the<i> prior</i> and the probability of the observation B given the property A is called the <i>likelihood</i>.
+								However, in many cases the likelihood is not feasible or its calculation is computationally very expensive. One solution to overcome this issue is to use
+								an approximation instead of the exact likelihood. In this work, an approximation via the euclidean distance proposed by Kirk et al. is used (Formula 2),<a href="#sources">[2]</a>.
+								<div id="loglik"  align="center" >
+									<p>
+										<math xmlns = "http://www.w3.org/1998/Math/MathML">	log(L ( &theta; ; D )) &approx; &nbsp;-&nbsp;
+											<mfrac >
+												<mi>  1 </mi>
+												<mi>  2 </mi>
+											</mfrac>
+											&nbsp;
+											<munderover>
+											 <mo>&sum;</mo>
+											 <mrow>
+													 <mi>i</mi>
+													 <mo>=</mo>
+													 <mn>1</mn>
+											 </mrow>
+											 <mi>M</mi>
+										 </munderover>
+										<msubsup>
+											<mo>d(y,&mu;(&theta;))</mo>
+												<mn>i</mn>
+												<mn>2</mn>
+										</msubsup>
+										</math>
+									</p>
+									<h6> Formula 2: Log - Likelihood Approximation. </h6>
+								</div>
+								<math xmlns = "http://www.w3.org/1998/Math/MathML">&theta;</math> relates to property A which is a certain parameter combination of the system of interest.
+								y is the observation of the system and <math xmlns = "http://www.w3.org/1998/Math/MathML">&mu;(&theta;)</math> is the simulation of
+								the system using <math xmlns = "http://www.w3.org/1998/Math/MathML">&theta;</math>. M determines the number of observations and d represents
+								the Euclidean distance.
+								<!-- obersrvation M is save at/distance(min prior, maxpiror)^2 -->
+								Intuitively the relationship of likelihood and euclidean distance is shown in Figure 1, left. The more similar a simulation of a tested parameter combination is to the true system, the higher is
+								its likelihood to be the true value.
+								In order to perform parameter inference, many parameter combinations are tested and an an approximated log-likelihood surface is constructed.
+								In the case of this data analysis study, <math xmlns = "http://www.w3.org/1998/Math/MathML">&theta;</math> is a parameter vector containing the initial conditions
+								and a parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> of the dynamical system of interest.
+								An example approximated log-likelihood surface is shown in Figure 1, right.
+								</p>
+								<div class="row">
+									   <div id="relation"  align="center"   class="col-4" style="height: 500px;">
+											 <script>
+											 	relation();
+												</script>
+										 </div>
+									   <div id="example_pp" class="col-8"></div>
+							 	</div>
+								<script>
+									// relation();
+									ll_plot(10,1,1,1,5,5,1);
+								</script>
+								<div id="fff"  >
+								<caption><b>Figure 1:</b> Left: Linear relationship of squared euclidean distance and approximated log- likelihood.
+									Right: Log-likelihood surface of initial conditions and the bifurcation parameter
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> for true values(0.0,0.0). </caption>
+									<p> </p>
+										<p> </p>
+								</div>
+								<p> </p>
+									<p> </p>
+							<h3 class="major" id = "fisherinfo" >Fisher information</h3>
+							<p>
+							The Observed Fisher information uses the log-likelihood to describe how strong the dynamical system reacts to minor changes of the parameter vector <math xmlns = "http://www.w3.org/1998/Math/MathML">&theta;</math>.
+							The Formula is given below (Formula 5), <a href="#sources">[3]</a>.
+							</p>
+							<div id="fish_formel"  align="center" >
+								<p>
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">
+														I &nbsp;( &nbsp; &alpha; , init &nbsp; )  &nbsp;=
+														&nbsp; - &nbsp; &delta; &nbsp;( &nbsp;
+														Hessian&nbsp;(&nbsp;LL&nbsp;(&nbsp;&alpha; &nbsp;,&nbsp; init ;  &nbsp;D  &nbsp;)))
+									</math>
+								</p>
+
+									<p> </p>
+							<h6>  Formula 3: observed Fisher information.</h6>
+							</div>
+							<p> The second derivative of the log-likelihood function is calculated in the Hessian.
+								<math xmlns = "http://www.w3.org/1998/Math/MathML">	&alpha;	</math> is a parameter of the dynamical system of interest,
+								<math xmlns = "http://www.w3.org/1998/Math/MathML">	init	</math>
+							is the initial condition of the system and <math xmlns = "http://www.w3.org/1998/Math/MathML">D	</math> is the observation of true system.
+							<math xmlns = "http://www.w3.org/1998/Math/MathML">	&delta;	</math> is a function	to reduce the dimension of the information matrix.
+							An example for <math xmlns = "http://www.w3.org/1998/Math/MathML">	&delta;	</math>  is the determinant or the trace.
+							Note, that there is no expectation value calculated within the Fisher information as no noise is added in this part of the study.</p>
+
+							<h3 class="major" id = "stab_ana" >stability analysis</h3>
+							<p>
+							The stability of a dynamical system can be determined by the existence and stability of <i>fixed points</i>. A fixed point is a state,
+							where the system is left unchanged by dynamics (Formula 3),<a href="#sources">[4]</a>.
+							</p>
+							<div id="fix"  align="center" >
+								<p>
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">
+
+										<mfrac >
+											<mi>   d(x) </mi>
+											<mi>   d(t) </mi>
+										</mfrac>
+ 										=	 &nbsp; f(x,&alpha;,t)&nbsp; = &nbsp; 0
+									</math>
+								</p>
+								<h6> Formula 4: Definition of a fixed point X. </h6>
+							</div>
+							<p>
+							A fixed point can be stable (=attracting) or unstable (=repelling). A stable fixed point is also called a sink and a unstable fixed point is called a source. The property of stability can be investigated
+							by determining signum of the gradient of the fixed point. A negative gradient implies a stable fixed point, whereas a positive gradient implies a unstable fixed point (Formula 4).
+							If the gradient is equal to zero, the fixed point is called marginal.
+
+							</p>
+							<div id="stable"  align="center" >
+								<p>
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">
+										 f '( x ) < 0  as t -> &#x221E;  &nbsp; &#x21d2;  &nbsp;X is stable
+									&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+										 f '( x ) > 0  as t ->&#x221E; &nbsp; &#x21d2;  &nbsp;X is unstable
+									</math>
+								</p>
+							<h6> Formula 5: Stability of a Fixed point X. </h6>
+							</div>
+							<p>
+								Stability analysis is a very important part of this study as we want to investigate weather the existence and stability of fixed points
+								can result in favourable conditions for parameter inference.
+								A question we want to answer could be: Can we infer a parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">	&alpha;	</math> easier
+								if one stable fixed point exists or if two stable and one unstable fixed points exist?
+								This question makes obviously only sense, if there are actually different quality states of the global stability of the system of interest,
+								e.g. fixed points appear or disappear. An example for these kind of systems are systems undergoing a co-dimension 1 bifurcations.
+							</p>
+
+							<h3 class="major" id = "bifur" >co-dimension 1 bifurcations</h3>
+							<div id= "try_me"> </div>
+							<caption><b>Animation 1:</b> Dynamical bifurcation diagram of the super-critical Pitchfork bifurcation. </caption>
+							<p></p>
+						  <script>
+						 		 try_again();
+						  </script>
+							 <p>
+								A qualitative stability change in a dynamical system caused by a smooth change of the systems' parameters is called a bifurcation.
+								If the change is caused by only one parameter <math xmlns = "http://www.w3.org/1998/Math/MathML"> &alpha;</math>, the bifurcation is called a co-dimension 1 bifurcation <a href="#sources">[4]</a>,<a href="#sources">[5]</a>.
+								In animation 1, an example bifurcation is presented.
+								Please press play or set the bifurcation parameter. The current fixed points labelled with their stability property will be depicted.
+								If <math xmlns = "http://www.w3.org/1998/Math/MathML"> &alpha;</math> is negative, one stable fixed point exists.
+								If <math xmlns = "http://www.w3.org/1998/Math/MathML"> &alpha;</math> is positive, two stable and one unstable fixed point exist.
+								If <math xmlns = "http://www.w3.org/1998/Math/MathML"> &alpha;</math> is zero one marginal fixed point exists.
+								The animation approximates a bifurcation diagram of the example bifurcation. The complete diagram is shown in Figure 2.
+							</p>
+							<div id="examplesaddle"  align="center" >
+										<figure>
+												<img src="images/exampleSupercritical.svg" >
+										</figure>
+										<caption><b>Figure 2:</b> Bifurcation diagram of the super-critical Pitchfork bifurcation. </caption>
+								</div>
+								<div id="background_links"  align="center" >
+												<ul class="alt">
+													<li><a href="#about"><i class="icon fa-arrow-left" style="color:white;"></i>Back to previous section: About </a>
+														<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+														<a href="#results">To the next section:  Overview of results  <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+											</ul>
+								</div>
+						</article>
+						<!-- discussion -->
+						<article id="discussion">
+							<h3 class="major">Discussion</h3>
+							<p>
+									<b>Saddle-Node bifurcation</b> The biggest influence on the performance of parameter inference in a system
+									with bifurcation type Saddle-Node is caused by the sigum of the bifurcation parameter
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math>. A negative value causes an approximated log-likelihood of
+									negative infinity as the system diverges (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.5
+									and <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5). Therefore, a positive <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math>  is favoured.
+									Secondly, initial conditions below the unstable fixed point should be avoided as the approximated log-likelihood is
+									negative infinity and the system diverges again (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+									with initial conditions -1 and 1). Thirdly, systems with true initial conditions between the two fixed points are prefered compared
+									to an initial condition above the fixed points as the initial conditions can be estimated more precise (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+									with initial conditions -0.4 and 1). Lastly, an interesting aspect is that an initial condition closer to the unstable fixed points results in better parameter inference
+									(Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+									with initial conditions -0.4 and 0.4).
+							</p>
+							<div id="background_links"  >
+											<ul class="alt">
+												<li><a href="#saddle"><i class="icon fa-arrow-right" style="color:white;"></i>Back to likelihood analysis</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+										</ul>
+							</div>
+							<p>
+									<b>Transcritical bifurcation</b> Again, the biggest influence on the performance of parameter inference in a system
+									with transcritical bifurcation is caused by the sigum of the bifurcation parameter
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.5
+									and <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5). Surprisingly, the shape of the log-likelihood
+									varies significantly and positive values of <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> are favourable.
+									Given a positive <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math>, again initial condition below the unstable
+									fixed point should be avoided as divergence would be caused (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+									with initial conditions -1 and 1). Lastly, differently to the saddle-node bifurcation, initial conditions above the stable fixed point allow higher
+									precision in parameter inference (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+									with initial conditions 0.1 and 1.0).
+							</p>
+							<div id="background_links"  >
+											<ul class="alt">
+												<li><a href="#trans"><i class="icon fa-arrow-right" style="color:white;"></i>Back to likelihood analysis</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+										</ul>
+							</div>
+							<p>
+									<b>Super-critical Pitchfork bifurcation</b>  The approximated log-likelihood is symmetrical along eth x axis and the favourable sigum of the bifurcation parameter
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> for the super-critical Pitchfork bifurcation is positive
+									(Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.5
+									and <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5). The super-critical Pitchfork bifurcation is very robust towards initial conditions.
+									Only slight preference regarding initial conditions for <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> estimation
+									is observed towards initial conditions closer to the unstable fixed point (Example:
+									Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5
+	 								and initial conditions 0.1 and 0.6).
+							</p>
+							<div id="background_links"  >
+											<ul class="alt">
+												<li><a href="#super"><i class="icon fa-arrow-right" style="color:white;"></i>Back to likelihood analysis</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+										</ul>
+							</div>
+							<p>
+									<b>Sub-critical Pitchfork bifurcation</b> The approximated log-likelihood is symmetrical along the x axis and the favourable sigum of the bifurcation parameter
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> for the super-critical Pitchfork bifurcation is clearly negative as positive values cause divergence.
+									(Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.5
+									and <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5). In contrast to the super-critical case, the sub-critical case is
+									sensitive towards the initial conditions (Example: Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.5 with initial conditions 0.1
+									and 0.6).
+							</p>
+							<div id="background_links"  >
+											<ul class="alt">
+												<li><a href="#sub"><i class="icon fa-arrow-right" style="color:white;"></i>Back to likelihood analysis</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+										</ul>
+							</div>
+							<p>
+									<b>Noise, Number of observations, Stochasticity</b>
+									Adding a noise term results in greater distances between simulations of close candidates and the true system.
+									Therefore, the approximated log-likelihood decreases (Example: Saddle-node bifurcation, Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.2 and initial condition 0.4
+									with Noise 0 and 1). Decreasing the number of observations causes less precision.	When adding heavy stochasticity,
+									inferring parameters is a lot harder (Example: Transcritical bifurcation,
+									Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = 0.5 and initial condition 0.4
+									with Stochasticity 0 and 1).
+									Also it is possible that a system converges to a fixed point that it is not supposed to. Also it is observed,
+									that a system diverges even though it should not or the other way around.
+									This can happen in every bifurcation type while testing a parameter combination or simulating the true
+									system (Example: Sub-critical Pitchfork bifurcation, Compare <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;</math> = -0.2 and initial condition 0.6
+									with Stochasticity 0 and 1).
+							</p>
+
+							<p>
+								<b>
+Fisher information
+								</b>
+
+For all four bifurcation types the fisher information is relatively high around the bifurcation at α equals zero (Example: δ = trace, log(FI) > 6.9 for all types).
+Also enrichment can be found around unstable fixed points.
+For instance, when reducing the dimension of the information matrix via the logarithm of the trace for the sub-critical Pitchfork bifurcation,
+we observe the fisher information increasing from 5 (init condition = 0.2) to 25 (init condition = 0.0) and decreasing again to 5 (initial condition = -0.2) for positive α.
+ This meets the expectation as minor changes  can result in either convergence or divergence.
+Low fisher information can be found when the true system diverges because no fixed point exists (Example: Saddle-Node bifurcation, negative α)
+or the system is initialized below a unstable fixed point (example: transcritical, negative initial condition, positive α).
+							</p>
+							<div id="background_links"  >
+											<ul class="alt">
+												<li><a href="#fisherinfo"><i class="icon fa-arrow-right" style="color:white;"></i>Back to fisher information analysis</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+										</ul>
+							</div>
+							<div id="discussion_links"  align="center" >
+											<ul class="alt">
+												<li><a href="#results" ><i class="icon fa-arrow-left" style="color:white;"></i>
+													To the previous section:  Overview of results  </a><math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<a href="#sources">To the next section: Sources <i class="icon fa-arrow-right" style="color:white;"></i></a>
+												</li>
+										</ul>
+							</div>
+						</article>
+						<article id="sources">
+							<h2 class="major">sources</h2>
+							<h3 class="major"> Acknowledgement</h3>
+							<p>I want to thank Professor Dr. Michael Stumpf and Dr. Fei He for supervising this project. I am particularly grateful to Thalia Chan
+								for her help regarding the frontend development.
+ </p>
+
+							<h3 class="major"> software</h3>
+							<p>The backend of this project is built in the programming language julia, Version 0.6.2 <a href="#sources">[6]</a>.
+								 The packages DifferentialEquations.jl <a href="#sources">[7]</a> and FiniteDiff.jl <a href="#sources">[8]</a> were used for calculating
+								 derivatives and solving all differnential equations. </p>
+							<p>The frontend of this project is html and javascript based.
+								 As a html template Dimension by HTML 5 UP <a href="#sources">[9]</a> is used. All dynamical plots are generated using the plotting
+								 library Plotly for Javascript <a href="#sources">[10]</a>. Static polts were produced using Matplotlib <a href="#sources">[11]</a>. The background picture is owned by mattbuck <a href="#sources">[12]</a>.</p>
+							<h3 class="major"> hardware</h3>
+							<p>All calculations were performed on the same machine: Intel® Core™2 Quad CPU Q9550 @ 2.83GHz × 4. </p>
+							<h3 class="major"> references</h3>
+							<p>[1] <a href="https://books.google.co.uk/books?id=kanonbwiqzcC">Wilkinson, D.J., Stochastic Modelling for Systems Biology, Second Edition, Taylor & Francis, 2011.</a></p>
+							<p>[2] <a href="https://www.sciencedirect.com/science/article/pii/S0006349508702315">Kirk P. , Toni T., Stumpf M., Parameter inference for biochemical systems that undergo a Hopf bifurcation, Biophysical journal 95 (2), 540-549, 2008.</a></p>
+							<p>[3] <a href="https://books.google.co.uk/books?id=9St7DCbu9AUC">Lehmann, E.L. and Casella, G., Theory of Point Estimation, Springer New York, 2003.</a></p>
+							<p>[4] <a href="https://books.google.co.uk/books?id=G3BaHtBrW68C">Jost, J., Dynamical Systems: Examples of Complex Behaviour, Springer Berlin Heidelberg, 2005.</a></p>
+							<p>[5] <a href="https://books.google.co.uk/books?id=mwxX2pv9UvYC">Blanchard, P. and Devaney, R.L. and Hall, G.R., Differential Equations, Thomson Brooks/Cole, 2006.</a></p>
+							<p>[6] <a href="http://julialang.org/publications/julia-fresh-approach-BEKS.pdf">Bezanson J., Edelman A., Karpinski S., ShahJulia, V.B., A Fresh Approach to Numerical Computing, SIAM Review, 59: 65–98, 2017.</a></p>
+							<p>[7] <a href="http://doi.org/10.5334/jors.151">Rackauckas, C. & Nie, Q., DifferentialEquations.jl – A Performant and Feature-Rich Ecosystem for Solving Differential Equations in Julia, Journal of Open Research Software., 5(1), p.15, 2017.</a></p>
+							<p>[8] <a href="https://johnmyleswhite.github.io/FiniteDiff.jl"> White, J.M., FiniteDiff.jl, 2015.</a></p>
+							<p>[9] <a href="https://html5up.net/dimension"> Dimension | HTML5 UP, Retrieved 25.5.18.</a></p>
+							<p>[10] <a href="https://plot.ly/javascript/"> Plotly | Make charts and dashboards online, Retrieved 25.5.18.</a></p>
+							<p>[11] <a href="https://github.com/matplotlib/matplotlib/tree/v2.2.2"> Hunter, J. D., Matplotlib: A 2D graphics environment, Computing In Science & Engineering, Volume 9, Number 3, p. 90-95, 2007.</a></p>
+							<p>[12] <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes%27_Theorem_MMB_01.jpg">  mattbuck, Wikimedia, 2009, retrieved 8.6.18.</a></p>
+
+							<div id="background_links"  align="center" >
+											<ul class="alt">
+												<li><a href="#discussion"><i class="icon fa-arrow-left" style="color:white;"></i>Back to previous section: Discussion</a>
+													<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+													<a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+										</ul>
+							</div>
+
+
+						</article>
+
+						<article id="fisherinfo">
+							<h2 class="major">Fisher information</h2>
+							<div id="fish_formel_copy"  align="center" >
+								<p>
+									<math xmlns = "http://www.w3.org/1998/Math/MathML">
+														FI &nbsp;( &nbsp; &alpha; , init &nbsp; )  &nbsp;=
+														&nbsp; - &nbsp; &delta; &nbsp;( &nbsp;
+														Hessian&nbsp;(&nbsp;LL&nbsp;(&nbsp;&alpha; &nbsp;,&nbsp; init ;  &nbsp;D  &nbsp;)))
+									</math>
+								</p>
+								<p> </p>
+									<p> </p>
+							<h6> Observed Fisher information </h6>
+							</div>
+							<p>
+								In this section, you can investigate the observed Fisher information for the four bifurcation types.
+								The Fisher information is calculated via the second derivative of the Hessian of the log-likelihood function.
+								<math xmlns = "http://www.w3.org/1998/Math/MathML">	&alpha;	</math> is the bifurcation parameter, 	<math xmlns = "http://www.w3.org/1998/Math/MathML">	init	</math>
+								is the initial condition of the system and <math xmlns = "http://www.w3.org/1998/Math/MathML">D	</math> is the true system.
+								<math xmlns = "http://www.w3.org/1998/Math/MathML">	&delta;	</math> is a function
+								to reduce the dimension of the information matrix. Several methods are provided.
+								Next to the Fisher information, the bifurcation diagram is pictured to highlight the link between the presence of fixed points
+								and the Fisher information. Klicking on the bifurcation diagram guids you back to the likelihood analysis of the related bifurcation type.
+							</p>
+							<table class='data-table'>
+							<td>
+							<td> <math xmlns = "http://www.w3.org/1998/Math/MathML">	&delta;	</math></td>
+							<td><select id="sumstat_fish" class = "fish_stuff"><option value=2>trace</option><option value=3> maximum eigenvalue</option><option value=4>0.5 absolute determinant</option><option value=5>variance alpha </option><option value=6>variance init</option><option value=7>covariance</option></td>
+							<td><td> Log data </td>
+							<td><select id="log" class = "fish_stuff"><option value=1>yes</option><option value=2>no</option></td>
+							</table>
+							<script>
+									fish(1,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(2,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(3,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(4,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+							</script>
+							<script>
+							$(".fish_stuff").change(function(){
+									fish(1,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(2,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(3,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+									fish(4,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+							});
+							</script>
+								<h3>Saddle Node Bifurcation</h3>
+								<div class="row">
+							   <div id="ppsaddle"  align="center"   class="col-3">
+									 	 <figure align = "center">
+									 		 <a href="#saddle"><img src="images/saddle.svg"  width="350" height="600"></a>
+									 	 </figure>
+								</div>
+							   <div id="fdiv1" class="col-9"></div>
+							 </div>
+							 <h3>Transcritical Bifurcation</h3>
+							 <div class="row">
+								<div id="pptrans"  align="center"   class="col-3">
+									<figure align = "center">
+										<a href="#trans"><img src="images/Transcritical.svg"  width="350" height="600"></a>
+									</figure>
+							 </div>
+								<div id="fdiv2" class="col-9"></div>
+							</div>
+							<h3>Supercritical Pitchfork Bifurcation</h3>
+							<div class="row">
+							 <div id="ppsuper"  align="center"   class="col-3">
+								 <figure align = "center">
+									<a href="#super"> <img src="images/Supercritical.svg"  width="350" height="600"></a>
+								 </figure>
+							</div>
+							 <div id="fdiv3" class="col-9"></div>
+						 </div>
+						 <h3>Subcritical Pitchfork  Bifurcation</h3>
+						 <div class="row">
+							 <div id="ppsaddle"  align="center"   class="col-3">
+									 <figure align = "center">
+											<a href="#sub"><img src="images/Subcritical.svg"  width="350" height="600"></a>
+									 </figure>
+							</div>
+							 <div id="fdiv4" class="col-9"></div>
+						 </div>
+
+
+
+						 <div id="background_links"  align="center" >
+						 				<ul class="alt">
+											<li><a href="#results"><i class="icon fa-arrow-up" style="color:white;"></i>	Back to overview </a></li>
+						 					<li><a href="#background"><i class="icon fa-arrow-left" style="color:white;"></i>Back to previous section: Background</a>
+						 						<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+						 						<a href="#discussion">To the next section: Discussion  <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+						 			</ul>
+						 </div>
+
+
+						</article>
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Contact</h2>
+								<form method="post" action="#">
+									<div class="field half first">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field half">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="4"></textarea>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="special" /></li>
+										<li><input type="reset" value="Reset" /></li>
+									</ul>
+								</form>
+								<!-- <ul class="icons">
+									<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+								</ul> -->
+
+															<div id="background_links"  align="center" >
+																			<ul class="alt">
+																				<li><a href="#sources"><i class="icon fa-arrow-left" style="color:white;"></i>Back to previous section: Sources</a>
+																					<math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+																					<!-- <a href="#contact">To the next section: Contact  <i class="icon fa-arrow-right" style="color:white;"></i></a></li> -->
+																		</ul>
+															</div>
+
+							</article>
+
+							<article id="saddle">
+								<h2 class="major">Saddle-node Bifurcation</h2>
+								<p> The underlying function with bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;	</math> is given in Formula 6 for the deterministic case presented via
+									Ordinary Differential Equation (ODE) and stochastic case via a Stochastic Differential Equation (SDE).
+									The difference of the species x over the time difference t is given by the function f(x).
+									Additionally, a stochastic part is added when transforming the system to a SDE.  The stochastic part includes a stochasticity
+									parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta;	</math> and a Wiener Process. </p>
+								<div id="saddle_formel_ode"  align="center" >
+									<p>
+										<math xmlns = "http://www.w3.org/1998/Math/MathML">
+											ODE&nbsp;: &nbsp;
+											<mfrac >
+												<mi>  dx </mi>
+												<mi>  dt </mi>
+											</mfrac>
+											&nbsp; =&nbsp;
+											f(x)
+											&nbsp;  =&nbsp; &alpha; -
+											<msup>
+												<mo>x</mo>
+													<mn>2</mn>
+											</msup>,
+										&nbsp;&nbsp; SDE&nbsp;:&nbsp;
+											<mfrac >
+												<mi>  dx </mi>
+												<mi>  dt </mi>
+											</mfrac> &nbsp; =  &nbsp;
+												f(x)&nbsp;  + &nbsp;
+												&beta;		 <mroot>
+	 										    <mi>
+	 													|f(x)|
+	 												</mi>
+	 										    <mn></mn>
+	 										 </mroot>				dW &nbsp;
+												</math>
+									</p>
+
+								<h6> Formula 6: ODE and SDE case of the Saddle-node bifurcation. </h6>
+								</div>
+								<h3 class="major"> pre-analysis: visualise Stability</h3>
+								<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>.
+									A dynamic phase portrait will appear below the drop down menu. </p>
+								<table class='data-table'>
+								<td>
+								<td> <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; &nbsp;</math></td>
+								<td><select id="saddle_bifur_alpha"  class = "saddle_bifur_para"><option value=1>-0.8</option><option value=2>-0.5</option><option value=3>0.0</option><option value=4>0.5</option><option value=5>0.8</option></td>
+							  </table>
+								<div id= "bifur_saddle"></div>
+								<script>
+ 									$(".saddle_bifur_para").change(function(){
+											bifur_saddle("1",$("#saddle_bifur_alpha option:selected").val());
+									});
+								</script>
+								<h3 class="major">pre-analysis: visualise ODE</h3>
+								<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the initial conditions of x.
+									A time course plot will appear below the drop down menu. For direct comparison the same visualisation can be displayed twice for different parameter combination.	</p>
+								<div id="saddle_feel_container">
+									<!-- <p> Define your system by setting an alpha and an initial condition for x in the table below:</p> -->
+									<table class='data-table'>
+										<td>
+											<td><b>1. System </b></td>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+											<mo>&alpha;</mo>
+												<mn>1</mn>
+										</msub></math></td>
+										<td><select id="saddle_feel_true_alpha"  class = "saddle_feel_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																													<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+										<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+															<mo>Init</mo>
+															<mn>1</mn>
+															</msub><math xmlns = "http://www.w3.org/1998/Math/MathML">
+										</td>
+										<td><select id="saddle_feel_true_init" class = "saddle_feel_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																													<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+									</table>
+								</div>
+								<!-- <p> Now we want to test this system by simulating other alphas and initial conditions: </p> -->
+								<div id="saddle_feel",  opacity: 0.5; ></div>
+								<script>
+											 $(".saddle_feel_params").change(function(){
+													plot_feel("1","1", $("#saddle_feel_true_alpha option:selected").val(),$("#saddle_feel_true_init option:selected").val())
+											});
+								</script>
+
+
+								<div id="saddle_feel_container2">
+									<table class='data-table'>
+										<td>
+											<td><b>2. System </b></td>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+											<mo>&alpha;</mo>
+												<mn>2</mn>
+										</msub></math></td>
+										<td><select id="saddle_feel_true_alpha2"  class = "saddle_feel_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																													<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+
+										<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+											<mo>Init</mo>
+												<mn>2</mn>
+										</msub><math xmlns = "http://www.w3.org/1998/Math/MathML"></td>
+										<td><select id="saddle_feel_true_init2" class = "saddle_feel_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																													<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+
+									</table>
+								</div>
+								<script>
+											 $(".saddle_feel_params2").change(function(){
+													plot_feel("2", "1", $("#saddle_feel_true_alpha2 option:selected").val(),$("#saddle_feel_true_init2 option:selected").val())
+											});
+								</script>
+								<div id="saddle_feel2",  opacity: 0.5; ></div>
+								<h3 class="major">log-Likelihood</h3>
+								<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>, the initial condition of x, the noise term and the number of observations.
+									The noise term relates to the <math xmlns = "http://www.w3.org/1998/Math/MathML">&sigma; </math> of a normal distribution with zero mean
+									which is added to the simulation of the selected true parameter values of the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the true initial condition of x.
+									The number of observations determines the number of time points for which the system is solved.
+									Also stochasticity has to be specified.  Stochasticity is quantified by <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta; </math>.
+									After setting the parameters, the approximated log-likelihood is displayed via a contour plot.
+									Further down the webpage, you have the possiblity compare the given log-likelihood with the log-likelihood of a different parameter combination (2. System).
+									A second log-likelihood plot will appear below.</p>
+								<div id="saddle_container">
+									<table class='data-table'>
+										<tr>
+											<td><b>1. System </b></td>
+											<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+										<td><select id="saddle_true_alpha"  class = "saddle_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																													<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+										<td><td>Init</td>
+										<td><select id="saddle_true_init" class = "saddle_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																													<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+										<tr><td>Noise</td>
+										<td><select id="saddle_noise"  class = "saddle_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+										<td>
+
+											<td>Observations</td>
+										<td><select id="saddle_observations"  class = "saddle_params"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+										<td><td>Stochasticity</td>
+										<td><select id="saddle_beta" class = "saddle_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+										<!-- <td><td>Solver</td>
+										<td><select id="saddle_solver" class = "saddle_params"><option value=1>EM</option><option value=2>RK4</option> -->
+									</table>
+								</div>
+								<div class="row">
+								 <div id="xsaddle"  align="center"   class="col-1">
+									 <figure align = "center">
+										 <img src="images/saddle.svg"  width="1" height="600">
+									 </figure>
+								</div>
+								 <div id="saddle_myDiv" class="col-9" ></div>
+								</div>
+								<script>
+								ll_plot("1","1", $("#saddle_observations option:selected").val(), $("#saddle_noise option:selected").val(), $("#saddle_true_alpha option:selected").val(),$("#saddle_true_init option:selected").val(),$("#saddle_beta option:selected").val(), $("#saddle_solver option:selected").val())
+
+
+								</script>
+ 								<script>
+											$(".saddle_params").change(function(){
+												ll_plot("1","1", $("#saddle_observations option:selected").val(), $("#saddle_noise option:selected").val(), $("#saddle_true_alpha option:selected").val(),$("#saddle_true_init option:selected").val(),$("#saddle_beta option:selected").val(), $("#saddle_solver option:selected").val())
+											});
+
+ 								</script>
+
+
+								<div class="row">
+								 <div id="xsaddle"  align="center"   class="col-1">
+									 <figure align = "center">
+										 <img src="images/saddle.svg"  width="1" height="600">
+									 </figure>
+								</div>
+								 <div id="saddle_myDiv2" class="col-9" ></div>
+								</div>
+
+
+								<div id="saddle_container2">
+									<table class='data-table'>
+										<tr>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML">2. System</math></td>
+											<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+										<td><select id="saddle_new_true_alpha"  class = "saddle_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																													<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+										<td><td>Init</td>
+										<td><select id="saddle_new_true_init" class = "saddle_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																													<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+										<tr><td>Noise</td>
+										<td><select id="saddle_new_noise"  class = "saddle_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+										<td>
+										<td>Observations</td>
+										<td><select id="saddle_new_observations"  class = "saddle_params2"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+										<td><td>Stochasticity</td>
+										<td><select id="saddle_new_beta" class = "saddle_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+										<!-- <td><td>Solver</td>
+										<td><select id="saddle_new_solver" class = "saddle_params2"><option value=1>EM</option><option value=2>RK4</option> -->
+									</table>
+								</div>
+								<script>
+												ll_plot("2","1", $("#saddle_new_observations option:selected").val(), $("#saddle_new_noise option:selected").val(), $("#saddle_new_true_alpha option:selected").val(),$("#saddle_new_true_init option:selected").val(),$("#saddle_new_beta option:selected").val() )
+ 								</script>
+								<script>
+											$(".saddle_params2").change(function(){
+												ll_plot("2","1", $("#saddle_new_observations option:selected").val(), $("#saddle_new_noise option:selected").val(), $("#saddle_new_true_alpha option:selected").val(),$("#saddle_new_true_init option:selected").val(),$("#saddle_new_beta option:selected").val() )
+											});
+
+ 								</script>
+
+								<div id="saddle_links"  align="center" >
+												<ul class="alt">
+													<li><a href="#results"><i class="icon fa-arrow-up" style="color:white;"></i>	Back to overview</a></li>
+													<li><a href="#sub" ><i class="icon fa-arrow-left" style="color:white;"></i>
+														To the previous bifurcation</a><math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+															<a href="#trans">To the next bifurcation<i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+													<li><a href="#fisherinfo"><i class="icon fa-anchor" style="color:white;"></i>	Jump to Fisher information</a></li>
+											</ul>
+								</div>
+
+							</article>
+
+							<article id="trans">
+								<h2 class="major">Transcritical Bifurcation</h2>
+
+								<p> The underlying function with bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;	</math> is given in Formula 6 for the deterministic case presented via
+									Ordinary Differential Equation (ODE) and stochastic case via a Stochastic Differential Equation (SDE).
+									The difference of the species x over the time difference t is given by the function f(x).
+									Additionally, a stochastic part is added when transforming the system to a SDE.  The stochastic part includes a stochasticity
+									parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta;	</math> and a Wiener Process. </p>
+									<div id="trans_formel"  align="center" >
+										<p>
+											<math xmlns = "http://www.w3.org/1998/Math/MathML">
+												ODE&nbsp;: &nbsp;
+												<mfrac >
+													<mi>  dx </mi>
+													<mi>  dt </mi>
+												</mfrac> &nbsp; =&nbsp;
+											f(x)
+											&nbsp; = &alpha;x -
+												<msup>
+													<mo>x</mo>
+														<mn>2</mn>
+												</msup>,
+										&nbsp;&nbsp; SDE&nbsp;:&nbsp;
+											<mfrac >
+												<mi>  dx </mi>
+												<mi>  dt </mi>
+											</mfrac> &nbsp; =  &nbsp;
+												f(x)&nbsp;  + &nbsp;
+												&beta;		 <mroot>
+	 										    <mi>
+	 													|f(x)|
+	 												</mi>
+	 										    <mn></mn>
+	 										 </mroot>				dW &nbsp;
+												</math>
+										</p>
+									<h6> Formula 7:  ODE and SDE case of the Transcritical bifurcation. </h6>
+									</div>
+
+
+									<h3 class="major"> pre-analysis: visualise Stability</h3>
+									<div id="trans_bifur_container">
+										<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>.
+ 												A dynamic phase portrait will appear below the drop down menu. </p>
+								<table class='data-table'>
+								<td><td> <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; &nbsp;</math></td>
+								<td><select id="trans_bifur_alpha"  class = "trans_bifur_para"><option value=1>-0.8</option><option value=2>-0.5</option><option value=3>0.0</option><option value=4>0.5</option><option value=5>0.8</option></td>
+							  </table>
+								<div id= "bifur_trans"></div>
+								<script>
+ 									$(".trans_bifur_para").change(function(){
+											bifur_trans("2",$("#trans_bifur_alpha option:selected").val());
+									});
+								</script>
+								<h3 class="major">pre-analysis: visualise ODE</h3>
+								<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the initial conditions of x.
+									A time course plot will appear below the drop down menu. For direct comparison the same visualisation can be displayed twice for different parameter combination.	</p>
+
+
+
+
+
+									<div id="trans_feel_container">
+									  <!-- <p> Define your system by setting an alpha and an initial condition for x in the table below:</p> -->
+									  <table class='data-table'>
+									    <td>
+									      <td><b>1. System </b></td>
+									      <td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+									      <mo>&alpha;</mo>
+									        <mn>1</mn>
+									    </msub></math></td>
+									    <td><select id="trans_feel_true_alpha"  class = "trans_feel_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+									                                                                          <option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+									    <td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+									              <mo>Init</mo>
+									              <mn>1</mn>
+									              </msub><math xmlns = "http://www.w3.org/1998/Math/MathML">
+									    </td>
+									    <td><select id="trans_feel_true_init" class = "trans_feel_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+									                                                                          <option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+									  </table>
+									</div>
+									<!-- <p> Now we want to test this system by simulating other alphas and initial conditions: </p> -->
+									<div id="trans_feel",  opacity: 0.5; ></div>
+									<script>
+									       $(".trans_feel_params").change(function(){
+									          plot_feel("1","2", $("#trans_feel_true_alpha option:selected").val(),$("#trans_feel_true_init option:selected").val())
+									      });
+									</script>
+
+
+									<div id="trans_feel_container2">
+									  <table class='data-table'>
+									    <td>
+									      <td><b>2. System </b></td>
+									      <td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+									      <mo>&alpha;</mo>
+									        <mn>2</mn>
+									    </msub></math></td>
+									    <td><select id="trans_feel_true_alpha2"  class = "trans_feel_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+									                                                                          <option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+
+									    <td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+									      <mo>Init</mo>
+									        <mn>2</mn>
+									    </msub><math xmlns = "http://www.w3.org/1998/Math/MathML"></td>
+									    <td><select id="trans_feel_true_init2" class = "trans_feel_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+									                                                                          <option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+
+									  </table>
+									</div>
+									<div id="trans_feel2",  opacity: 0.5; ></div>
+									<script>
+									       $(".trans_feel_params2").change(function(){
+									          plot_feel("2","2", $("#trans_feel_true_alpha2 option:selected").val(),$("#trans_feel_true_init2 option:selected").val())
+									      });
+									</script>
+									  <!-- <p> Compare your system by setting an alpha and an initial condition for x in the table below:</p> -->
+
+									<!-- <div id="trans_feel_container2">
+									  <table class='data-table'>
+									    <td><td>Alpha</td>
+									    <td><select id="trans_feel_true_alpha2"  class = "trans_feel_params2"><option value=1>-2</option><option value=2>-1.5</option><option value=3>-1</option><option value=4>-0.5</option><option value=5>0</option>
+									                                                                          <option value=6>0.5</option><option value=7>1</option><option value=8>1.5</option><option value=9>2</option>
+
+									    <td>Initial condition of x</td>
+									    <td><select id="trans_feel_true_init2" class = "trans_feel_params2"><option value=1>-2</option><option value=2>-1.5</option><option value=3>-1</option><option value=4>-0.5</option><option value=5>0</option>
+									                                                                          <option value=6>0.5</option><option value=7>1</option><option value=8>1.5</option><option value=9>2</option>
+									  </table>
+									</div>
+									<script>
+									       $(".trans_feel_params2").change(function(){
+									          plot_feel("2", "2", $("#trans_feel_true_alpha2 option:selected").val(),$("#trans_feel_true_init2 option:selected").val())
+									      });
+									</script> -->
+
+
+
+
+
+									<h3 class="major">log-Likelihood</h3>
+								<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>, the initial condition of x, the noise term and the number of observations.
+									The noise term relates to the <math xmlns = "http://www.w3.org/1998/Math/MathML">&sigma; </math> of a normal distribution with zero mean
+									which is added to the simulation of the selected true parameter values of the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the true initial condition of x.
+									The number of observations determines the number of time points for which the system is solved.
+									Also stochasticity has to be specified.  Stochasticity is quantified by <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta; </math>.
+									After setting the parameters, the approximated log-likelihood is displayed via a contour plot.
+									Further down the webpage, you have the possiblity compare the given log-likelihood with the log-likelihood of a different parameter combination (2. System).
+									A second log-likelihood plot will appear below.</p>
+									<div id="trans_container">
+																		<table class='data-table'>
+																			<tr>
+																				<td><b>1. System </b></td>
+																				<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+																			<td><select id="trans_true_alpha"  class = "trans_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+																			<td><td>Init</td>
+																			<td><select id="trans_true_init" class = "trans_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+																			<tr><td>Noise</td>
+																			<td><select id="trans_noise"  class = "trans_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+																			<td>
+
+																				<td>Observations</td>
+																			<td><select id="trans_observations"  class = "trans_params"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+																			<td><td>Stochasticity</td>
+																			<td><select id="trans_beta" class = "trans_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+																			<!-- <td><td>Solver</td>
+																			<td><select id="trans_solver" class = "trans_params"><option value=1>EM</option><option value=2>RK4</option> -->
+																		</table>
+																	</div>
+																	<!-- <div id="trans_myDiv"></div> -->
+																	<div class="row">
+																	 <div id="xtrans"  align="center"   class="col-1">
+																		 <figure align = "center">
+																			 <img src="images/saddle.svg"  width="1" height="600">
+																		 </figure>
+																	</div>
+																	 <div id="trans_myDiv" class="col-9" ></div>
+																	</div>
+									 								<script>
+																				$(".trans_params").change(function(){
+																					ll_plot("1","2", $("#trans_observations option:selected").val(), $("#trans_noise option:selected").val(), $("#trans_true_alpha option:selected").val(),$("#trans_true_init option:selected").val(),$("#trans_beta option:selected").val(), $("#trans_solver option:selected").val())
+																				});
+									 								</script>
+
+
+																	<!-- <div id="trans_myDiv2" ></div> -->
+
+																	<div class="row">
+																	 <div id="xtrans"  align="center"   class="col-1">
+																		 <figure align = "center">
+																			 <img src="images/saddle.svg"  width="1" height="600">
+																		 </figure>
+																	</div>
+																	 <div id="trans_myDiv2" class="col-9" ></div>
+																	</div>
+
+
+
+
+																	<div id="trans_container2">
+																		<table class='data-table'>
+																			<tr>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">2. System</math></td>
+																				<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+																			<td><select id="trans_new_true_alpha"  class = "trans_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+																			<td><td>Init</td>
+																			<td><select id="trans_new_true_init" class = "trans_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+																			<tr><td>Noise</td>
+																			<td><select id="trans_new_noise"  class = "trans_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+																			<td>
+
+																				<td>Observations</td>
+																			<td><select id="trans_new_observations"  class = "trans_params2"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+																			<td><td>Stochasticity</td>
+																			<td><select id="trans_new_beta" class = "trans_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+																			<!-- <td><td>Solver</td>
+																			<td><select id="trans_new_solver" class = "trans_params2"><option value=1>EM</option><option value=2>RK4</option> -->
+																		</table>
+																	</div>
+																	<script>
+																				$(".trans_params2").change(function(){
+
+																					ll_plot("2","2", $("#trans_new_observations option:selected").val(), $("#trans_new_noise option:selected").val(), $("#trans_new_true_alpha option:selected").val(),$("#trans_new_true_init option:selected").val(),$("#trans_new_beta option:selected").val() )
+																				});
+									 								</script>
+
+																	<!-- <script>
+																	window.onresize = function () {
+																		ll_plot("2","2", $("#trans_new_observations option:selected").val(), $("#trans_new_noise option:selected").val(), $("#trans_new_true_alpha option:selected").val(),$("#trans_new_true_init option:selected").val(),$("#trans_new_beta option:selected").val() )
+																		ll_plot("1","2", $("#trans_observations option:selected").val(), $("#trans_noise option:selected").val(), $("#trans_true_alpha option:selected").val(),$("#trans_true_init option:selected").val(),$("#trans_beta option:selected").val(), $("#trans_solver option:selected").val())
+																			}
+																	</script> -->
+
+
+																	<div id="trans_links"  align="center" >
+																					<ul class="alt">
+																						<li><a href="#results"><i class="icon fa-arrow-up" style="color:white;"></i>	Back to overview</a></li>
+																						<li display= "inline-block;"><a href="#saddle" ><i class="icon fa-arrow-left" style="color:white;"></i>
+																							To the previous bifurcation  </a><math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+																								<a href="#super">To the next bifurcation  <i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+																						<li><a href="#fisherinfo"><i class="icon fa-anchor" style="color:white;"></i>	 Jump to Fisher information</a></li>
+
+
+																				</ul>
+																	</div>
+								</article>
+
+
+							<article id="super">
+								<h2 class="major">Supercritical Pitchfork</h2>
+								<p> The underlying function with bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;	</math> is given in Formula 6 for the deterministic case presented via
+										Ordinary Differential Equation (ODE) and stochastic case via a Stochastic Differential Equation (SDE).
+										The difference of the species x over the time difference t is given by the function f(x).
+										Additionally, a stochastic part is added when transforming the system to a SDE.  The stochastic part includes a stochasticity
+										parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta;	</math> and a Wiener Process. </p>
+									<div id="super__formel"  align="center" >
+										<p>
+											<math xmlns = "http://www.w3.org/1998/Math/MathML">
+												<mfrac >
+													<mi>  dx </mi>
+													<mi>  dt </mi>
+												</mfrac> = &nbsp; =&nbsp;
+											f(x)
+											&nbsp; &alpha;x -
+												<msup>
+													<mo>x</mo>
+														<mn>3</mn>
+												</msup>,
+										&nbsp;&nbsp; SDE&nbsp;:&nbsp;
+											<mfrac >
+												<mi>  dx </mi>
+												<mi>  dt </mi>
+											</mfrac> &nbsp; =  &nbsp;
+												f(x)&nbsp;  + &nbsp;
+												&beta;		 <mroot>
+	 										    <mi>
+	 													|f(x)|
+	 												</mi>
+	 										    <mn></mn>
+	 										 </mroot>				dW &nbsp;
+											</math>
+										</p>
+									<h6> Formula 8: ODE and SDE case of the Supercritical Pitchfork bifurcation. </h6>
+									</div>
+
+									<h3 class="major"> pre-analysis: visualise Stability</h3>
+									<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>.
+										A dynamic phase portrait will appear below the drop down menu. </p>
+									<table class='data-table'>
+									<td>
+									<td> <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; &nbsp;</math></td>
+									<td><select id="super_bifur_alpha"  class = "super_bifur_para"><option value=1>-0.8</option><option value=2>-0.5</option><option value=3>0.0</option><option value=4>0.5</option><option value=5>0.8</option></td>
+									</table>
+									<div id= "bifur_super"></div>
+									<script>
+										$(".super_bifur_para").change(function(){
+												bifur_super("1",$("#super_bifur_alpha option:selected").val());
+										});
+									</script>
+									<h3 class="major">pre-analysis: visualise ODE</h3>
+									<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the initial conditions of x.
+										A time course plot will appear below the drop down menu. For direct comparison the same visualisation can be displayed twice for different parameter combination.	</p>
+									<div id="super_feel_container">
+										<!-- <p> Define your system by setting an alpha and an initial condition for x in the table below:</p> -->
+										<table class='data-table'>
+											<td>
+												<td><b>1. System </b></td>
+												<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+												<mo>&alpha;</mo>
+													<mn>1</mn>
+											</msub></math></td>
+											<td><select id="super_feel_true_alpha"  class = "super_feel_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																														<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+																<mo>Init</mo>
+																<mn>1</mn>
+																</msub><math xmlns = "http://www.w3.org/1998/Math/MathML">
+											</td>
+											<td><select id="super_feel_true_init" class = "super_feel_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																														<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+										</table>
+									</div>
+									<!-- <p> Now we want to test this system by simulating other alphas and initial conditions: </p> -->
+									<div id="super_feel",  opacity: 0.5; ></div>
+									<script>
+												 $(".super_feel_params").change(function(){
+														plot_feel("1","3", $("#super_feel_true_alpha option:selected").val(),$("#super_feel_true_init option:selected").val())
+												});
+									</script>
+
+
+									<div id="super_feel_container2">
+										<table class='data-table'>
+											<td>
+												<td><b>2. System </b></td>
+												<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+												<mo>&alpha;</mo>
+													<mn>2</mn>
+											</msub></math></td>
+											<td><select id="super_feel_true_alpha2"  class = "super_feel_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																														<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+
+											<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+												<mo>Init</mo>
+													<mn>2</mn>
+											</msub><math xmlns = "http://www.w3.org/1998/Math/MathML"></td>
+											<td><select id="super_feel_true_init2" class = "super_feel_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																														<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+
+										</table>
+									</div>
+									<script>
+												 $(".super_feel_params2").change(function(){
+														plot_feel("2", "3", $("#super_feel_true_alpha2 option:selected").val(),$("#super_feel_true_init2 option:selected").val())
+												});
+									</script>
+									<div id="super_feel2",  opacity: 0.5; ></div>
+									<h3 class="major">log-Likelihood</h3>
+									<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>, the initial condition of x, the noise term and the number of observations.
+										The noise term relates to the <math xmlns = "http://www.w3.org/1998/Math/MathML">&sigma; </math> of a normal distribution with zero mean
+										which is added to the simulation of the selected true parameter values of the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the true initial condition of x.
+										The number of observations determines the number of time points for which the system is solved.
+										Also stochasticity has to be specified.  Stochasticity is quantified by <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta; </math>.
+										After setting the parameters, the approximated log-likelihood is displayed via a contour plot.
+										Further down the webpage, you have the possiblity compare the given log-likelihood with the log-likelihood of a different parameter combination (2. System).
+										A second log-likelihood plot will appear below.</p>
+									<div id="super_container">
+										<table class='data-table'>
+											<tr>
+												<td><b>1. System </b></td>
+												<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+												<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+											<td><select id="super_true_alpha"  class = "super_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																														<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+											<td><td>Init</td>
+											<td><select id="super_true_init" class = "super_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																														<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+											<tr><td>Noise</td>
+											<td><select id="super_noise"  class = "super_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+											<td>
+
+												<td>Observations</td>
+											<td><select id="super_observations"  class = "super_params"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+											<td><td>Stochasticity</td>
+											<td><select id="super_beta" class = "super_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+											<!-- <td><td>Solver</td>
+											<td><select id="super_solver" class = "super_params"><option value=1>EM</option><option value=2>RK4</option> -->
+										</table>
+									</div>
+									<!-- <div id="super_myDiv"></div> -->
+									<div class="row">
+										<div id="xsuper"  align="center"   class="col-1">
+											<figure align = "center">
+												<img src="images/saddle.svg"  width="1" height="600">
+											</figure>
+									 </div>
+										<div id="super_myDiv" class="col-9" ></div>
+								 </div>
+									<script>
+												$(".super_params").change(function(){
+
+													ll_plot("1","3", $("#super_observations option:selected").val(), $("#super_noise option:selected").val(), $("#super_true_alpha option:selected").val(),$("#super_true_init option:selected").val(),$("#super_beta option:selected").val(), $("#super_solver option:selected").val())
+												});
+									</script>
+
+
+									<!-- <div id="super_myDiv2" ></div> -->
+									<div class="row">
+									<div id="xsuper"  align="center"   class="col-1">
+										<figure align = "center">
+											<img src="images/saddle.svg"  width="1" height="600">
+										</figure>
+								 </div>
+									<div id="super_myDiv2" class="col-9" ></div>
+								 </div>
+									<div id="super_container2">
+										<table class='data-table'>
+											<tr>
+												<td><math xmlns = "http://www.w3.org/1998/Math/MathML">2. System</math></td>
+												<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+												<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+											<td><select id="super_new_true_alpha"  class = "super_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																														<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+											<td><td>Init</td>
+											<td><select id="super_new_true_init" class = "super_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																														<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+											<tr><td>Noise</td>
+											<td><select id="super_new_noise"  class = "super_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+											<td>
+
+												<td>Observations</td>
+											<td><select id="super_new_observations"  class = "super_params2"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+											<td><td>Stochasticity</td>
+											<td><select id="super_new_beta" class = "super_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+											<!-- <td><td>Solver</td>
+											<td><select id="super_new_solver" class = "super_params2"><option value=1>EM</option><option value=2>RK4</option> -->
+										</table>
+									</div>
+									<script>
+												$(".super_params2").change(function(){
+
+													ll_plot("2","3", $("#super_new_observations option:selected").val(), $("#super_new_noise option:selected").val(), $("#super_new_true_alpha option:selected").val(),$("#super_new_true_init option:selected").val(),$("#super_new_beta option:selected").val() )
+												});
+									</script>
+									<div id="super_links"  align="center" >
+													<ul class="alt">
+															<li><a href="#results"><i class="icon fa-arrow-up" style="color:white;"></i>	Back to overview</a></li>
+														<li><a href="#trans" ><i class="icon fa-arrow-left" style="color:white;"></i>
+															To the previous bifurcation</a><math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+																<a href="#sub">To the next bifurcation<i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+														<li><a href="#fisherinfo"><i class="icon fa-anchor" style="color:white;"></i>	Jump to Fisher information</a></li>
+												</ul>
+									</div>
+							</article>
+
+							<article id="sub">
+								<h2 class="major">Subcritical Pitchfork</h2>
+								<p> The underlying function with bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha;	</math> is given in Formula 6 for the deterministic case presented via
+										Ordinary Differential Equation (ODE) and stochastic case via a Stochastic Differential Equation (SDE).
+										The difference of the species x over the time difference t is given by the function f(x).
+										Additionally, a stochastic part is added when transforming the system to a SDE.  The stochastic part includes a stochasticity
+										parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta;	</math> and a Wiener Process. </p>
+																	<div id="sub_formel"  align="center" >
+																		<p>
+																			<math xmlns = "http://www.w3.org/1998/Math/MathML">
+																				<mfrac >
+																					<mi>  dx </mi>
+																					<mi>  dt </mi>
+																				</mfrac> = &nbsp;
+																					f(x)
+																					&nbsp;  =&nbsp;  &alpha;x +
+																				<msup>
+																					<mo>x</mo>
+																						<mn>3</mn>
+																				</msup>,
+																					&nbsp;&nbsp; SDE&nbsp;:&nbsp;
+																						<mfrac >
+																							<mi>  dx </mi>
+																							<mi>  dt </mi>
+																						</mfrac> &nbsp; =  &nbsp;
+																							f(x)&nbsp;  + &nbsp;
+																							&beta;		 <mroot>
+												 										    <mi>
+												 													|f(x)|
+												 												</mi>
+												 										    <mn></mn>
+												 										 </mroot>				dW &nbsp;
+																			</math>
+																		</p>
+																	<h6> Formula 9: ODE and SDE case of the Subcritical Pitchfork bifurcation. </h6>
+																	</div>
+
+
+																	<h3 class="major"> pre-analysis: visualise Stability</h3>
+																	<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>.
+																		A dynamic phase portrait will appear below the drop down menu. </p>
+																	<table class='data-table'>
+																	<td>
+																	<td> <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; &nbsp;</math></td>
+																	<td><select id="sub_bifur_alpha"  class = "sub_bifur_para"><option value=1>-1.5</option><option value=2>-0.5</option><option value=3>0.0</option><option value=4>0.5</option><option value=5>1.5</option></td>
+																	</table>
+																	<div id= "bifur_sub"></div>
+																	<script>
+																		$(".sub_bifur_para").change(function(){
+																				bifur_sub("1",$("#sub_bifur_alpha option:selected").val());
+																		});
+																	</script>
+																	<h3 class="major">pre-analysis: visualise ODE</h3>
+																	<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the initial conditions of x.
+																		A time course plot will appear below the drop down menu. For direct comparison the same visualisation can be displayed twice for different parameter combination.	</p>
+																	<div id="sub_feel_container">
+																		<!-- <p> Define your system by setting an alpha and an initial condition for x in the table below:</p> -->
+																		<table class='data-table'>
+																			<td>
+																				<td><b>1. System </b></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+																				<mo>&alpha;</mo>
+																					<mn>1</mn>
+																			</msub></math></td>
+																			<td><select id="sub_feel_true_alpha"  class = "sub_feel_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+																			<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+																								<mo>Init</mo>
+																								<mn>1</mn>
+																								</msub><math xmlns = "http://www.w3.org/1998/Math/MathML">
+																			</td>
+																			<td><select id="sub_feel_true_init" class = "sub_feel_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+																		</table>
+																	</div>
+																	<!-- <p> Now we want to test this system by simulating other alphas and initial conditions: </p> -->
+																	<div id="sub_feel",  opacity: 0.5; ></div>
+																	<script>
+																				 $(".sub_feel_params").change(function(){
+																						plot_feel("1","4", $("#sub_feel_true_alpha option:selected").val(),$("#sub_feel_true_init option:selected").val())
+																				});
+																	</script>
+
+
+																	<div id="sub_feel_container2">
+																		<table class='data-table'>
+																			<td>
+																				<td><b>2. System </b></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+																				<mo>&alpha;</mo>
+																					<mn>2</mn>
+																			</msub></math></td>
+																			<td><select id="sub_feel_true_alpha2"  class = "sub_feel_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+
+																			<td><math xmlns = "http://www.w3.org/1998/Math/MathML"><msub>
+																				<mo>Init</mo>
+																					<mn>2</mn>
+																			</msub><math xmlns = "http://www.w3.org/1998/Math/MathML"></td>
+																			<td><select id="sub_feel_true_init2" class = "sub_feel_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+
+																		</table>
+																	</div>
+																	<script>
+																				 $(".sub_feel_params2").change(function(){
+																						plot_feel("2", "4", $("#sub_feel_true_alpha2 option:selected").val(),$("#sub_feel_true_init2 option:selected").val())
+																				});
+																	</script>
+																	<div id="sub_feel2",  opacity: 0.5; ></div>
+																	<h3 class="major">log-Likelihood</h3>
+																	<p> Please specify the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math>, the initial condition of x, the noise term and the number of observations.
+																		The noise term relates to the <math xmlns = "http://www.w3.org/1998/Math/MathML">&sigma; </math> of a normal distribution with zero mean
+																		which is added to the simulation of the selected true parameter values of the bifurcation parameter <math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math> and the true initial condition of x.
+																		The number of observations determines the number of time points for which the system is solved.
+																		Also stochasticity has to be specified.  Stochasticity is quantified by <math xmlns = "http://www.w3.org/1998/Math/MathML">&beta; </math>.
+																		After setting the parameters, the approximated log-likelihood is displayed via a contour plot.
+																		Further down the webpage, you have the possiblity compare the given log-likelihood with the log-likelihood of a different parameter combination (2. System).
+																		A second log-likelihood plot will appear below.</p>
+																	<div id="sub_container">
+																		<table class='data-table'>
+																			<tr>
+																				<td><b>1. System </b></td>
+																				<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+																			<td><select id="sub_true_alpha"  class = "sub_params"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+																			<td><td>Init</td>
+																			<td><select id="sub_true_init" class = "sub_params"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+																			<tr><td>Noise</td>
+																			<td><select id="sub_noise"  class = "sub_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+																			<td>
+
+																				<td>Observations</td>
+																			<td><select id="sub_observations"  class = "sub_params"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+																			<td><td>Stochasticity</td>
+																			<td><select id="sub_beta" class = "sub_params"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+																			<!-- <td><td>Solver</td>
+																			<td><select id="sub_solver" class = "sub_params"><option value=1>EM</option><option value=2>RK4</option> -->
+																		</table>
+																	</div>
+																	<!-- <div id="sub_myDiv"></div> -->
+																	<div class="row">
+																	<div id="xsub"  align="center"   class="col-1">
+																		<figure align = "center">
+																			<img src="images/saddle.svg"  width="1" height="600">
+																		</figure>
+																 </div>
+																	<div id="sub_myDiv" class="col-9" ></div>
+																 </div>
+																	<script>
+																				$(".sub_params").change(function(){
+																					ll_plot("1","4", $("#sub_observations option:selected").val(), $("#sub_noise option:selected").val(), $("#sub_true_alpha option:selected").val(),$("#sub_true_init option:selected").val(),$("#sub_beta option:selected").val(), $("#sub_solver option:selected").val())
+																				});
+																	</script>
+
+
+																	<!-- <div id="sub_myDiv2" ></div> -->
+																 	<div class="row">
+																	<div id="xsub"  align="center"   class="col-1">
+																		<figure align = "center">
+																			<img src="images/saddle.svg"  width="1" height="600">
+																		</figure>
+																 </div>
+																	<div id="sub_myDiv2" class="col-9" ></div>
+																 </div>
+																	<div id="sub_container2">
+																		<table class='data-table'>
+																			<tr>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">2. System</math></td>
+																				<td><td><math xmlns = "http://www.w3.org/1998/Math/MathML"> &nbsp;&nbsp;&nbsp;</math></td>
+																				<td><math xmlns = "http://www.w3.org/1998/Math/MathML">&alpha; </math></td>
+																			<td><select id="sub_new_true_alpha"  class = "sub_params2"><option value=1>-1.5</option><option value=2>-0.8</option><option value=3>-0.5</option><option value=4>-0.2</option><option value=5>0.0</option>
+																																																						<option value=6>0.2</option><option value=7>0.5</option><option value=8>0.8</option><option value=9>1.5</option>
+																			<td><td>Init</td>
+																			<td><select id="sub_new_true_init" class = "sub_params2"><option value=1>-1</option><option value=2>-0.6</option><option value=3>-0.4</option><option value=4>-0.1</option><option value=5 >0.0</option>
+																																																						<option value=6>0.1</option><option value=7>0.4</option><option value=8>0.6</option><option value=9>1.0</option>
+																			<tr><td>Noise</td>
+																			<td><select id="sub_new_noise"  class = "sub_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option><option value=4>1.0</option>
+																			<td>
+
+																				<td>Observations</td>
+																			<td><select id="sub_new_observations"  class = "sub_params2"><option value=1 selected >1000</option><option value=2>500</option><option value=3>200</option><option value=4>10</option>
+																			<td><td>Stochasticity</td>
+																			<td><select id="sub_new_beta" class = "sub_params2"><option value=1 selected >0.0</option><option value=2>0.01</option><option value=3>0.1</option> <option value=4>1.0</option>
+																			<!-- <td><td>Solver</td>
+																			<td><select id="sub_new_solver" class = "sub_params2"><option value=1>EM</option><option value=2>RK4</option> -->
+																		</table>
+																	</div>
+																	<script>
+																				$(".sub_params2").change(function(){
+																					ll_plot("2","4", $("#sub_new_observations option:selected").val(), $("#sub_new_noise option:selected").val(), $("#sub_new_true_alpha option:selected").val(),$("#sub_new_true_init option:selected").val(),$("#sub_new_beta option:selected").val() )
+																				});
+																	</script>
+																	<div id="sub_links"  align="center" >
+																					<ul class="alt">
+																							<li><a href="#results"><i class="icon fa-arrow-up" style="color:white;"></i>	Back to overview</a></li>
+																						<li><a href="#super" ><i class="icon fa-arrow-left" style="color:white;"></i>
+																							To the previous bifurcation</a><math xmlns = "http://www.w3.org/1998/Math/MathML">&nbsp; &nbsp;&nbsp; &nbsp;</math>
+																								<a href="#saddle">To the next bifurcation<i class="icon fa-arrow-right" style="color:white;"></i></a></li>
+																						<li><a href="#fisherinfo"><i class="icon fa-anchor" style="color:white;"></i>	Jump to Fisher information</a></li>
+																				</ul>
+																	</div>
+							</article>
+
+
+							<script>
+							window.onresize = function () {
+								ll_plot(10,1,1,1,5,5,1);
+								ll_plot("2","1", $("#saddle_new_observations option:selected").val(), $("#saddle_new_noise option:selected").val(), $("#saddle_new_true_alpha option:selected").val(),$("#saddle_new_true_init option:selected").val(),$("#saddle_new_beta option:selected").val() )
+								ll_plot("1","1", $("#saddle_observations option:selected").val(), $("#saddle_noise option:selected").val(), $("#saddle_true_alpha option:selected").val(),$("#saddle_true_init option:selected").val(),$("#saddle_beta option:selected").val(), $("#saddle_solver option:selected").val())
+								ll_plot("1","2", $("#trans_observations option:selected").val(), $("#trans_noise option:selected").val(), $("#trans_true_alpha option:selected").val(),$("#trans_true_init option:selected").val(),$("#trans_beta option:selected").val(), $("#trans_solver option:selected").val())
+								ll_plot("2","2", $("#trans_new_observations option:selected").val(), $("#trans_new_noise option:selected").val(), $("#trans_new_true_alpha option:selected").val(),$("#trans_new_true_init option:selected").val(),$("#trans_new_beta option:selected").val() )
+								ll_plot("2","3", $("#super_new_observations option:selected").val(), $("#super_new_noise option:selected").val(), $("#super_new_true_alpha option:selected").val(),$("#super_new_true_init option:selected").val(),$("#super_new_beta option:selected").val() )
+								ll_plot("1","3", $("#super_observations option:selected").val(), $("#super_noise option:selected").val(), $("#super_true_alpha option:selected").val(),$("#super_true_init option:selected").val(),$("#super_beta option:selected").val(), $("#super_solver option:selected").val())
+								ll_plot("1","4", $("#sub_observations option:selected").val(), $("#sub_noise option:selected").val(), $("#sub_true_alpha option:selected").val(),$("#sub_true_init option:selected").val(),$("#sub_beta option:selected").val(), $("#sub_solver option:selected").val())
+								ll_plot("2","4", $("#sub_new_observations option:selected").val(), $("#sub_new_noise option:selected").val(), $("#sub_new_true_alpha option:selected").val(),$("#sub_new_true_init option:selected").val(),$("#sub_new_beta option:selected").val() )
+								fish(1,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+								fish(2,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+								fish(3,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+								fish(4,$("#sumstat_fish option:selected").val(),$("#log option:selected").val());
+
+								Plotly.purge('try_me');
+								try_again();
+
+
+									}
+							</script>
+
+						<!-- Elements -->
+							<article id="elements">
+								<h2 class="major">Elements</h2>
+
+								<section>
+									<h3 class="major">Text</h3>
+									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
+									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									<hr />
+									<h2>Heading Level 2</h2>
+									<h3>Heading Level 3</h3>
+									<h4>Heading Level 4</h4>
+									<h5>Heading Level 5</h5>
+									<h6>Heading Level 6</h6>
+									<hr />
+									<h4>Blockquote</h4>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<h4>Preformatted</h4>
+									<pre><code>i = 0;
+
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
+
+print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+								</section>
+
+								<section>
+									<h3 class="major">Lists</h3>
+
+									<h4>Unordered</h4>
+									<ul>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Alternate</h4>
+									<ul class="alt">
+										<li>Dolor pulvinar etiam.</li>
+										<li>Sagittis adipiscing.</li>
+										<li>Felis enim feugiat.</li>
+									</ul>
+
+									<h4>Ordered</h4>
+									<ol>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis viverra.</li>
+										<li>Felis enim feugiat.</li>
+										<li>Dolor pulvinar etiam.</li>
+										<li>Etiam vel felis lorem.</li>
+										<li>Felis enim et feugiat.</li>
+									</ol>
+									<h4>Icons</h4>
+									<ul class="icons">
+										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+										<li><a href="#" class="fas fa-arrow-left"><span class="label">arrow-left</span></a></li>
+										<li><a href="#" class="fas fa-arrow-right"><span class="label">arrow-right</span></a></li>
+										<li><a href="#" class="fas fa-anchor"><span class="label">anchor</span></a></li>
+										<!-- fal fa-anchor -->
+									</ul>
+
+									<h4>Actions</h4>
+									<ul class="actions">
+										<li><a href="#" class="button special">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions vertical">
+										<li><a href="#" class="button special">Default</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Table</h3>
+									<h4>Default</h4>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+									<h4>Alternate</h4>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Item One</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Two</td>
+													<td>Vis ac commodo adipiscing arcu aliquet.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Three</td>
+													<td> Morbi faucibus arcu accumsan lorem.</td>
+													<td>29.99</td>
+												</tr>
+												<tr>
+													<td>Item Four</td>
+													<td>Vitae integer tempus condimentum.</td>
+													<td>19.99</td>
+												</tr>
+												<tr>
+													<td>Item Five</td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="2"></td>
+													<td>100.00</td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</section>
+
+								<section>
+									<h3 class="major">Buttons</h3>
+									<ul class="actions">
+										<li><a href="#" class="button special">Special</a></li>
+										<li><a href="#" class="button">Default</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button">Default</a></li>
+										<li><a href="#" class="button small">Small</a></li>
+									</ul>
+									<ul class="actions">
+										<li><a href="#" class="button special icon fa-download">Icon</a></li>
+										<li><a href="#" class="button icon fa-download">Icon</a></li>
+									</ul>
+									<ul class="actions">
+										<li><span class="button special disabled">Disabled</span></li>
+										<li><span class="button disabled">Disabled</span></li>
+									</ul>
+								</section>
+
+								<section>
+									<h3 class="major">Form</h3>
+									<form method="post" action="#">
+										<div class="field half first">
+											<label for="demo-name">Name</label>
+											<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
+										</div>
+										<div class="field half">
+											<label for="demo-email">Email</label>
+											<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
+										</div>
+										<div class="field">
+											<label for="demo-category">Category</label>
+											<div class="select-wrapper">
+												<select name="demo-category" id="demo-category">
+													<option value="">-</option>
+													<option value="1">Manufacturing</option>
+													<option value="1">Shipping</option>
+													<option value="1">Administration</option>
+													<option value="1">Human Resources</option>
+												</select>
+											</div>
+										</div>
+										<div class="field half first">
+											<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+											<label for="demo-priority-low">Low</label>
+										</div>
+										<div class="field half">
+											<input type="radio" id="demo-priority-high" name="demo-priority">
+											<label for="demo-priority-high">High</label>
+										</div>
+										<div class="field half first">
+											<input type="checkbox" id="demo-copy" name="demo-copy">
+											<label for="demo-copy">Email me a copy</label>
+										</div>
+										<div class="field half">
+											<input type="checkbox" id="demo-human" name="demo-human" checked>
+											<label for="demo-human">Not a robot</label>
+										</div>
+										<div class="field">
+											<label for="demo-message">Message</label>
+											<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Send Message" class="special" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p> <a href="#contact" >Elisabeth R&#246;sch</a>, Imperial College London</p>
+					</footer>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+
+
+	</body>
+</html>

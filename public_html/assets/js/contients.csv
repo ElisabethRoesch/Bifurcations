@@ -1,0 +1,28 @@
+country,year,pop,continent,lifeExp,gdpPercap
+marginal,1,26246831,marginal,-2,0
+unstable,1,26246831,unstable,-2,0
+single fixed point,3,26246839,marginal,0,0
+single fixed point,4,26246839,marginal,0,0
+single fixed point,5,26246839,marginal,0,0
+single fixed point,1,26246839,stable,-2,0
+single fixed point,2,26246839,stable,-2,0
+single fixed point,3,26246839,stable,-2,0
+marginal,2,26246839,marginal,-2,0
+unstable,2,26246839,unstable,-2,0
+marginal,3,26246839,marginal,-2,0
+unstable,3,26246839,unstable,-2,0
+single fixed point,4,26246839,stable,-2,0
+single fixed point,5,26246839,stable,-2,0
+single fixed point,2,26246839,stable,-1,0
+single fixed point,3,26246839,stable,-1,0
+single fixed point,4,26246839,stable,-1,0
+single fixed point,5,26246839,stable,-1,0
+stable,4,26246839,stable,1,1
+stable,5,26246839,stable,1,1
+stable,4,26246839,stable,1,-1
+stable,5,26246839,stable,1,-1
+unstable,4,26246839,unstable,1,0
+unstable,5,26246839,unstable,1,0
+unstable,5,26246839,unstable,2,0
+stable,5,26246839,stable,2,-1.4
+stable,5,26246839,stable,2,1.4
