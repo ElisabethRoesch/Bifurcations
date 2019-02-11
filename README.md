@@ -12,6 +12,6 @@ Quantifying information content around co-dimension 1 bifurcations
 8. Subcritical pitchfork bifurcation
 9. Effect of noisy and sparse data on likelihood estimation
 
-
+Additional analysis ideas for further work:
 10. SDEs
 11. Probability analysis of jumps
