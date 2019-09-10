@@ -1,3 +1,4 @@
+https://zenodo.org/badge/164957773.svg
 # Bifurcations
 Quantifying information content around co-dimension 1 bifurcations
 
